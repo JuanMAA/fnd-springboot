@@ -1,10 +1,9 @@
 package com.fundamentos.springboot.fundamentos.bean;
 
-public class MyBeanImplement implements MyBean{
+public class MyBeanTwoImplement implements MyBean{
 
     @Override
     public void print() {
-        System.out.println("Bean Uno !!!");
+        System.out.println("Bean Dos !!!");
     }
-
 }

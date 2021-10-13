@@ -7,6 +7,6 @@ public class ComponentTwoImplement implements ComponentDependency{
 
     @Override
     public void Saludar() {
-        System.out.println("Twooooo");
+        System.out.println("ComponentDependency Doos !!!");
     }
 }
