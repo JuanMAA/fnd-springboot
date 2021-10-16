@@ -5,6 +5,8 @@ import com.fundamentos.springboot.fundamentos.bean.MyBeanWithDep;
 import com.fundamentos.springboot.fundamentos.bean.MyBeanWithProperties;
 import com.fundamentos.springboot.fundamentos.component.ComponentDependency;
 import com.fundamentos.springboot.fundamentos.pojo.UserPojo;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +21,8 @@ public class FundamentosApplication implements CommandLineRunner {
 	private MyBeanWithDep mbwd;
 	private MyBeanWithProperties mbwp;
 	private UserPojo up;
+
+	Log LOGGER = LogFactory.getLog(FundamentosApplication.class);
 
 	public FundamentosApplication(@Qualifier("componentImplement") ComponentDependency cd1, @Qualifier("componentTwoImplement") ComponentDependency cd2, MyBean mb, MyBeanWithDep mbwd, MyBeanWithProperties mbwp, UserPojo up) {
 		this.cd1 = cd1;
@@ -41,5 +45,6 @@ public class FundamentosApplication implements CommandLineRunner {
 		mbwd.printWithDep();
 		System.out.println(mbwp.toString());
 		System.out.println(up.toString());
+		LOGGER.error("Esto es un error");
 	}
 }
