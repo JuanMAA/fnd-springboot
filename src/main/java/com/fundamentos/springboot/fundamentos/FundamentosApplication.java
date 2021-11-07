@@ -67,6 +67,8 @@ public class FundamentosApplication implements CommandLineRunner {
 				.forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc -> "+user));
 		ur.findByNameContainingOrderByIdDesc("%Juan%")
 				.forEach(user -> LOGGER.info("findByNameContainingOrderByIdDesc -> "+user));
+		LOGGER.info("getAllByBirthdateAndAndEmail -> " + ur.getAllByBirthdateAndAndEmail(LocalDate.of(2021, 1, 16), "juan@juan.cl")
+				.orElseThrow(()-> new RuntimeException("No se encontro usuario")));
 	}
 
 	public void saveUsuariosInDB() {
