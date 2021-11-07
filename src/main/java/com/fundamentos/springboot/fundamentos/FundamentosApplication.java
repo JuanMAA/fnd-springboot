@@ -55,19 +55,29 @@ public class FundamentosApplication implements CommandLineRunner {
 	}
 
 	public void getInfoJpqlFromUser() {
-		LOGGER.info("Usu con met findByUserEmail: "+ ur.findByUserEmail("juan6@juan.cl").orElseThrow(()-> new RuntimeException("No se encontro usuario")));
-		ur.findAndSort("Juan", Sort.by("id").ascending()).forEach(user -> LOGGER.info("Usuario con metodo sort "+user));
+		//LOGGER.info("findByUserEmail -> "+ ur.findByUserEmail("juan6@juan.cl").orElseThrow(()-> new RuntimeException("No se encontro usuario")));
+		//ur.findAndSort("Juan", Sort.by("id").ascending()).forEach(user -> LOGGER.info("findAndSort -> "+user));
+		//ur.findByName("Juan").forEach(user -> LOGGER.info("findByName -> "+user));;
+		//ur.findByEmailAndName("Juan2", "juan2@juan.cl").forEach(user -> LOGGER.info("findByName -> "+user));
+		//ur.findByNameLike("%x%").forEach(user -> LOGGER.info("findByNameLike -> "+user));
+		//ur.findByNameOrEmail("Juan2", "juan3@juan.cl").forEach(user -> LOGGER.info("findByNameOrEmail -> "+user));
+		ur.findByBirthdateBetween(LocalDate.of(2021, 1, 10), LocalDate.of(2021, 6, 21))
+				.forEach(user -> LOGGER.info("findByBirthdateBetween -> "+user));
+		ur.findByNameLikeOrderByIdDesc("%Juan%")
+				.forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc -> "+user));
+		ur.findByNameContainingOrderByIdDesc("%Juan%")
+				.forEach(user -> LOGGER.info("findByNameContainingOrderByIdDesc -> "+user));
 	}
 
 	public void saveUsuariosInDB() {
-		User user1 = new User("Juan", "juan@juan.cl", LocalDate.of(2021, 1, 16));
-		User user2 = new User("Juan2", "juan2@juan.cl", LocalDate.of(2021, 2, 16));
-		User user3 = new User("Juan3", "juan3@juan.cl", LocalDate.of(2021, 3, 16));
-		User user4 = new User("Juan4", "juan4@juan.cl", LocalDate.of(2021, 4, 16));
-		User user5 = new User("Juan5", "juan5@juan.cl", LocalDate.of(2021, 5, 16));
-		User user6 = new User("Juan6", "juan6@juan.cl", LocalDate.of(2021, 6, 16));
-		User user7 = new User("Juan7", "juan7@juan.cl", LocalDate.of(2021, 7, 16));
-		User user8 = new User("Juan8", "juan8@juan.cl", LocalDate.of(2021, 8, 16));
+		User user1 = new User("Juanx", "juan@juan.cl", LocalDate.of(2021, 1, 16));
+		User user2 = new User("Juan2", "juan2@juan.cl", LocalDate.of(2021, 2, 17));
+		User user3 = new User("Juan3", "juan3@juan.cl", LocalDate.of(2021, 3, 18));
+		User user4 = new User("Juan4", "juan4@juan.cl", LocalDate.of(2021, 4, 19));
+		User user5 = new User("Juan5", "juan5@juan.cl", LocalDate.of(2021, 5, 20));
+		User user6 = new User("Juan6", "juan6@juan.cl", LocalDate.of(2021, 6, 21));
+		User user7 = new User("Juan7", "juan7@juan.cl", LocalDate.of(2021, 7, 22));
+		User user8 = new User("Juan8", "juan8@juan.cl", LocalDate.of(2021, 8, 23));
 		User user9 = new User("Juan9", "juan9@juan.cl", LocalDate.of(2021, 9, 16));
 		User user10 = new User("Juan10", "juan10@juan.cl", LocalDate.of(2021, 10, 16));
 		User user11 = new User("Juan11", "juan11@juan.cl", LocalDate.of(2021, 11, 16));
